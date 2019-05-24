@@ -1,7 +1,7 @@
 # SmartPointers
 
 ## Objective:
-This project aims to create two prograsm that uses smart pointers using c++
+This project aims to create two programs that uses smart pointers using c++
 
 
 ## Contributors (sorted alphabetically):
