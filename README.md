@@ -5,9 +5,10 @@ This project aims to create two prograsm that uses smart pointers using c++
 
 
 ## Contributors (sorted alphabetically):
-* [Karlos Braga](https://github.com/okamuratoshi)
-* [Max Lucio](https://github.com/gapolli)
+* [Karlos Braga](https://github.com/)
 * [Mateus Santos](https://github.com/mateuspim)
+* [Max Lucio](https://github.com/)
+* [Victor Gomes](https://github.com/VictorGom3s)
 
 ## Automate all the work:
 At the Terminal or other Shell interpreter, just type the following
