@@ -9,12 +9,10 @@ int main(int argc, char* argv[])
 	try 
 	{
 		MainProgram start;
-		start.processa();
+		start.process();
 		start.clear();
 	}
 	catch (exception& what){
 		cerr << "Erro: " << what.what() << endl;
-	}
-	
-
+	}	
 }
