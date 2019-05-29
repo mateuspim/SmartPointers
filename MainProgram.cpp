@@ -49,13 +49,22 @@ const void MainProgram::addPerson()
 
 	int id = 0, cpf = 0, rg = 0;
 	string nome = " rapaiz ";
-
+	
+	/*
+	cout << "Digite o NOME da a pessoa: ";
+	getline(cin, nome);
+	cout << "Digite o ID para a pessoa: ";
+	cin >> id;
+	cout << "Digite o CPF para a pessoa: ";
+	cin >> cpf;
+	cout << "Digite o RG para a pessoa: ";
+	cin >> rg;
+	*/
+	
 	Pessoa temp (id, cpf, rg, nome);
 
 	gList.push(temp);
-
-	std::shared_ptr<ItemType> temp2 = make_shared<ItemType>(temp);
-	queueList.push(temp2);
+	qList.push(temp);
 }
 
 const void MainProgram::remPerson()
@@ -70,12 +79,24 @@ const void MainProgram::remPerson()
 	
 
 	cout << "\n------------------------------\n" << endl;
+
+	if (qList.pop())
+		std::cout << "\n Removido com sucesso";
+	else
+		std::cout << "\n Nada para remover";
 }
 
 const void MainProgram::srcPerson()
 {
 	cout << "\n------------------------------\n" << "Procurar pessoa"
 		<< "\n------------------------------\n" << endl;
+
+	//Esse comando lista toda a lista porém a apaga
+	//gList.print();
+
+	cout << "\n------------------------------\n" << endl;
+
+	qList.print();
 }
 
 

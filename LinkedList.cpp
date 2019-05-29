@@ -8,16 +8,12 @@ typedef Pessoa ItemType;
 
 LinkedList::LinkedList()
 {
-	
-	cout << "	GenericQueue	" << endl;
+	cout << "	LinkedList	" << endl;
 }
 
 LinkedList::~LinkedList()
 {
-	cout << "	~GenericQueue	" << endl;
-	while (head) {
-		head = std::move(head->next);
-	}
+	cout << "	~LinkedList	" << endl;
 }
 
 
@@ -26,12 +22,12 @@ void LinkedList::push(ItemType data)
 	if (!isFull()){
 		std::unique_ptr<ListNode> temp = std::make_unique<ListNode>();
 		temp->info = std::move(data);
-		if (head) {
-			temp->next = std::move(head);
-			head = std::move(temp);
+		if (front) {
+			temp->next = std::move(front);
+			front = std::move(temp);
 		}
 		else {
-			head = std::move(temp);
+			front = std::move(temp);
 		}
 	}
 }
@@ -39,10 +35,10 @@ void LinkedList::push(ItemType data)
 
 bool LinkedList::pop()
 {
-	if (head != nullptr)
+	if (front != nullptr)
 	{
-		std::unique_ptr<ListNode> temp = std::move(head);
-		head = std::move(temp->next);
+		std::unique_ptr<ListNode> temp = std::move(front);
+		front = std::move(temp->next);
 		return true;
 	}
 	else {
@@ -53,15 +49,15 @@ bool LinkedList::pop()
 
 void LinkedList::print()
 {
-	while (head != nullptr) {
-		cout << head->info.getName();
-		head = std::move(head->next);
+	while (front != nullptr) {
+		front->info.printPessoa();
+		front = std::move(front->next);
 	}
 }
 
 bool LinkedList::isEmpty() const
 {
-	return (head == nullptr);
+	return (front == nullptr);
 }
 
 bool LinkedList::isFull() const

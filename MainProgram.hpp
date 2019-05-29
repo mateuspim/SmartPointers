@@ -2,6 +2,7 @@
 	#define MAINPROGRAM_HPP
 
 #include "LinkedList.hpp"
+#include "Queue.hpp"
 #include "pessoa.hpp"
 
 class MainProgram
@@ -20,7 +21,7 @@ class MainProgram
 		const virtual void srcPerson();
 
 		LinkedList gList;
-		Queue queueList;
+		Queue qList;
 };
 
 #endif // !MAINPROGRAM_HPP

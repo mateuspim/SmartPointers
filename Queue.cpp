@@ -6,34 +6,67 @@
 
 Queue::Queue()
 {
-	
+	cout << "	GenericQueue	" << endl;
 }
 
 Queue::~Queue()
 {
+	cout << "	~GenericQueue	" << endl;
 }
 
-void Queue::push(std::shared_ptr<ItemType> data)
+void Queue::push(ItemType data)
 {
-	qList.push(data);
+	if (!isFull()){ 
+		std::shared_ptr<QueueNode> new_rear = std::make_shared<QueueNode>(data);
+		if (rear)
+		{
+			rear->next = new_rear;
+		}
+		rear = new_rear;
+
+		if (!front)
+		{
+			front = rear;
+		}
+	}
 }
 
 bool Queue::pop()
 {
-	qList.pop();
+	if (front == nullptr) return false;
+
+	auto pop = std::move(front);
+	front = pop->next;
+	if (!front)
+	{
+		front.reset();
+	}
+
+	pop.reset();
 	return true;
 }
 
 void Queue::print()
 {
+	std::shared_ptr<QueueNode> temp = front;
+	while (temp != nullptr) {
+		front->info.printPessoa();
+		temp = temp->next;
+	}	
 }
 
 bool Queue::isEmpty() const
 {
-	return false;
+	return (front == nullptr);
 }
 
 bool Queue::isFull() const
 {
-	return false;
+	try {
+		std::unique_ptr<QueueNode> location = std::make_unique<QueueNode>();
+		return false;
+	}
+	catch (std::bad_alloc exception) {
+		return true;
+	}
 }

@@ -1,27 +1,38 @@
 #ifndef QUEUE_HPP
 	#define QUEUE_HPP
 
-#include <queue>
 #include <memory>
 #include "pessoa.hpp"
 
 typedef Pessoa ItemType;
 
+struct QueueNode
+{
+	ItemType info;
+	std::shared_ptr<QueueNode> next = nullptr;
+
+	QueueNode() {  }
+	QueueNode(ItemType data) { info = data; }
+	~QueueNode() { if (info.getName() != "") std::cout << "Excluindo a pessoa: " << info.getName() << '\n'; }
+};
+
 class Queue
 {
-public:
+	public:
 
-	Queue();
-	~Queue();
-	void push(std::shared_ptr<ItemType > data);
-	bool pop();
-	void print();
+		Queue();
+		~Queue();
 
-	bool     isEmpty() const;
-	bool     isFull() const;
+		void push(ItemType data);
+		bool pop();
+		void print();
 
-private:
-	std::queue<std::shared_ptr<ItemType>> qList;
+		bool     isEmpty() const;
+		bool     isFull() const;
+
+	private:
+		std::shared_ptr<QueueNode> front;
+		std::shared_ptr<QueueNode> rear;
 };
 
 
