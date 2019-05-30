@@ -11,12 +11,15 @@ struct ListNode
 	ItemType info;
 	std::unique_ptr<ListNode> next;
 
+	ListNode() {  }
+	ListNode(ItemType data) { info = data; }
 	~ListNode() { if (info.getName() != "") std::cout << "Excluindo a pessoa: " << info.getName() << '\n'; }
 };
 
 class LinkedList
 {
 	public:
+		int length = 0;
 
 		LinkedList();
 		~LinkedList();

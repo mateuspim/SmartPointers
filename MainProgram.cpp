@@ -61,10 +61,19 @@ const void MainProgram::addPerson()
 	cin >> rg;
 	*/
 	
-	Pessoa temp (id, cpf, rg, nome);
+	Pessoa temp (id, cpf, rg, "1");
+	Pessoa temp1(id, cpf, rg, "2");
+	Pessoa temp2(id, cpf, rg, "3");
+	Pessoa temp3(id, cpf, rg, "4");
 
 	gList.push(temp);
+	gList.push(temp1);
+	gList.push(temp2);
+	gList.push(temp3);
 	qList.push(temp);
+	qList.push(temp1);
+	qList.push(temp2);
+	qList.push(temp3);
 }
 
 const void MainProgram::remPerson()
@@ -92,7 +101,7 @@ const void MainProgram::srcPerson()
 		<< "\n------------------------------\n" << endl;
 
 	//Esse comando lista toda a lista porém a apaga
-	//gList.print();
+	gList.print();
 
 	cout << "\n------------------------------\n" << endl;
 

@@ -1,6 +1,7 @@
 #include <cstddef>
 #include <new>
 #include <memory>
+#include <vector>
 
 #include "LinkedList.hpp"
 
@@ -21,7 +22,8 @@ void LinkedList::push(ItemType data)
 {
 	if (!isFull()){
 		std::unique_ptr<ListNode> temp = std::make_unique<ListNode>();
-		temp->info = std::move(data);
+		temp->info = data;
+		
 		if (front) {
 			temp->next = std::move(front);
 			front = std::move(temp);
@@ -29,6 +31,7 @@ void LinkedList::push(ItemType data)
 		else {
 			front = std::move(temp);
 		}
+		length++;
 	}
 }
 
@@ -42,17 +45,28 @@ bool LinkedList::pop()
 		return true;
 	}
 	else {
-		return false;
+		return false;	
 	}
 }
 
 
 void LinkedList::print()
 {
+	int x = length;
+	vector<ItemType> data;
+	//ItemType data[x];
+
 	while (front != nullptr) {
-		front->info.printPessoa();
+		cout << " " << front->info.getName() << " -> ";
+		data.push_back(front->info);
 		front = std::move(front->next);
 	}
+
+	for (ItemType x : data) {
+		push(x);
+		//data.pop_back();
+	}
+
 }
 
 bool LinkedList::isEmpty() const

@@ -18,6 +18,8 @@ void Queue::push(ItemType data)
 {
 	if (!isFull()){ 
 		std::shared_ptr<QueueNode> new_rear = std::make_shared<QueueNode>(data);
+		new_rear->next = nullptr;
+
 		if (rear)
 		{
 			rear->next = new_rear;
@@ -33,10 +35,11 @@ void Queue::push(ItemType data)
 
 bool Queue::pop()
 {
-	if (front == nullptr) return false;
+	if (isEmpty()) return false;
 
 	auto pop = std::move(front);
 	front = pop->next;
+
 	if (!front)
 	{
 		front.reset();
@@ -50,7 +53,9 @@ void Queue::print()
 {
 	std::shared_ptr<QueueNode> temp = front;
 	while (temp != nullptr) {
-		front->info.printPessoa();
+		cout << " " << temp->info.getName() << " use: "<< temp.use_count();
+		if (temp->next != nullptr)
+			cout << " -> ";
 		temp = temp->next;
 	}	
 }
